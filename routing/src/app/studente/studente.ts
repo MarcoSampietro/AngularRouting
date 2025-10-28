@@ -1,16 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  // il componente rappresenta una riga (<tr>) della tabella
+  // se usi il pattern <tr> come riga della tabella:
   selector: 'tr[app-studente]',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './studente.html',
   styleUrl: './studente.css',
 })
 export class Studente {
-  @Input() studId!: number;
+  @Input() id!: number;        // <— usa "id"
   @Input() nome!: string;
   @Input() classe!: string;
   @Input() mediaVoti!: number;
@@ -19,11 +20,6 @@ export class Studente {
 
   mostraMedia = false;
 
-  toggleMedia() {
-    this.mostraMedia = !this.mostraMedia;
-  }
-
-  removeClick() {
-    this.remove.emit(this.studId);
-  }
+  toggleMedia() { this.mostraMedia = !this.mostraMedia; }
+  removeClick() { this.remove.emit(this.id); }
 }

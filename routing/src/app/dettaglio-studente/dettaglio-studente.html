@@ -1,4 +1,22 @@
-<p>Nome: {{ studente.nome }}</p>
-<p>Classe:{{ studente.classe }}</p>
-<p>Media voti:{{ studente.mediaVoti }}</p>
-<a routerLink="/pagina3">← Torna alla lista</a>
+<div class="card p-4 border-primary mt-4">
+  <h3>Dettaglio Studente</h3>
+  <p><strong>Nome:</strong> {{ studente.nome }}</p>
+  <p><strong>Classe:</strong> {{ studente.classe }}</p>
+
+  <!-- Media colorata dinamicamente -->
+  <p>
+    <strong>Media voti:</strong>
+    <span
+      [ngClass]="{
+        'text-success': studente.mediaVoti >= 6,
+        'text-danger': studente.mediaVoti < 6
+      }">
+      {{ studente.mediaVoti }}
+    </span>
+  </p>
+
+  <div class="d-flex justify-content-between mt-3">
+    <a routerLink="/pagina3" class="btn btn-secondary">← Torna alla lista</a>
+    <button class="btn btn-primary" (click)="studenteSuccessivo()">Studente successivo →</button>
+  </div>
+</div>

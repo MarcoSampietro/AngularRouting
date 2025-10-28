@@ -1,6 +1,22 @@
 <h3>Elenco Studenti</h3>
 
-<table class="table table-bordered table-striped">
+<div class="form-group mt-3 mb-4">
+  <label for="classeInput"><strong>Filtra per classe:</strong></label>
+  <input
+    id="classeInput"
+    type="text"
+    class="form-control mt-1"
+    placeholder="Es. 5D"
+    [(ngModel)]="filtroClasse" />
+</div>
+
+<!-- Messaggio se non ci sono risultati -->
+<div *ngIf="studentiFiltrati.length === 0" class="alert alert-warning">
+  Nessuno studente trovato per la classe
+</div>
+
+<!-- Tabella -->
+<table *ngIf="studentiFiltrati.length > 0" class="table table-bordered table-striped">
   <thead class="thead-dark">
     <tr>
       <th>ID</th>
@@ -13,8 +29,8 @@
   <tbody>
     <tr
       app-studente
-      *ngFor="let s of studenti"
-      [studId]="s.id"
+      *ngFor="let s of studentiFiltrati"
+      [id]="s.id"
       [nome]="s.nome"
       [classe]="s.classe"
       [mediaVoti]="s.mediaVoti"
