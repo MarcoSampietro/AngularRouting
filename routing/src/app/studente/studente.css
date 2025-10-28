@@ -1,0 +1,9 @@
+/* Leggera spaziatura verticale tra le righe */
+td {
+  vertical-align: middle;
+}
+
+/* Margine extra se vuoi più spazio tra bottone e media */
+.ms-2 {
+  margin-left: 10px !important;
+}

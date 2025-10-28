@@ -1,5 +1,24 @@
-<app-studente
-    *ngFor="let s of studenti"
-    [nome]="s.nome"
-    [classe]="s.classe">
-</app-studente>
+<h3>Elenco Studenti</h3>
+
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Classe</th>
+      <th>Azioni</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr
+      app-studente
+      *ngFor="let s of studenti"
+      [studId]="s.id"
+      [nome]="s.nome"
+      [classe]="s.classe"
+      [mediaVoti]="s.mediaVoti"
+      (remove)="rimuoviStudente($event)">
+    </tr>
+  </tbody>
+</table>

@@ -1,20 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Studente } from '../studente/studente';
+import { StudentiService } from '../services/studenti-service';
 
 @Component({
   selector: 'app-pagina3',
+  standalone: true,
   imports: [CommonModule, Studente],
   templateUrl: './pagina3.html',
   styleUrl: './pagina3.css',
 })
-
 export class Pagina3 {
-  studenti = [
-    { id: 1, nome: 'Mario', classe: '5D', mediaVoti: 4.1 },
-    { id: 2, nome: 'Luca', classe: '5D', mediaVoti: 7.3 },
-    { id: 3, nome: 'Luigi', classe: '5D', mediaVoti: 3.9 },
-    { id: 4, nome: 'Paolo', classe: '5D', mediaVoti: 7.0 },
-    { id: 5, nome: 'Andrea', classe: '5D', mediaVoti: 5.7 },
-  ];
+  studenti: any[] = [];
+  constructor(private studentiService: StudentiService) {}
+  ngOnInit() { this.studenti = this.studentiService.getStudenti(); }
+
+  rimuoviStudente(id: number) {
+    this.studentiService.rimuoviStudente(id);
+    this.studenti = this.studentiService.getStudenti();
+  }
 }

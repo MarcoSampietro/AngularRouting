@@ -1,4 +1,12 @@
-<article class="post">
-    <h2>{{ nome }}</h2>
-    <p>{{ classe }}</p>
-</article>
+<td>{{ studId }}</td>
+<td>{{ nome }}</td>
+<td>{{ classe }}</td>
+<a [routerLink]="['/pagina3', studente.id]">Mostra dettagli</a>
+
+<td class="d-flex align-items-center justify-content-between">
+  <div class="d-flex align-items-center">
+    <button class="btn btn-info btn-sm" (click)="toggleMedia()">Mostra media</button>
+    <span *ngIf="mostraMedia" class="ms-2">{{ mediaVoti }}</span>
+  </div>
+  <button class="btn btn-danger btn-sm" (click)="removeClick()">Rimuovi</button>
+</td>
